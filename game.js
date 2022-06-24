@@ -5,9 +5,14 @@ import {
   getSnakeHead,
   snakeIntersection,
 } from "./snake.js";
+
 import { outsideGrid } from "./grid.js";
 
-import { update as updateFood, draw as drawFood } from "./food.js";
+import {
+  update as updateFood,
+  draw as drawFood,
+  snakeFoodCounter,
+} from "./food.js";
 
 let lastRenderTime = 0;
 let gameOver = false;
@@ -15,7 +20,7 @@ const gameBoard = document.getElementById("game-board");
 
 function main(currentTime) {
   if (gameOver) {
-    if (confirm("you lost, press ok to restart")) {
+    if (confirm(`Your score was ${snakeFoodCounter}, press OK to restart!`)) {
       window.location = "/";
     }
     return;
